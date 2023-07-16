@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.train.member.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
