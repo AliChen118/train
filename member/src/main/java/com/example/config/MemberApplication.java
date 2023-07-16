@@ -1,13 +1,15 @@
-package com.example.train;
+package com.example.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-public class TrainApplication {
+@ComponentScan("com.example")
+public class MemberApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TrainApplication.class, args);
+        SpringApplication.run(MemberApplication.class, args);
         System.out.println("Spring start...");
     }
 
