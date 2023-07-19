@@ -2,9 +2,7 @@ package com.example.train.member.controller;
 
 import com.example.train.member.service.MemberService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Ali
@@ -21,5 +19,10 @@ public class MemberController {
     @GetMapping("/count")
     public int count() {
         return memberService.count();
+    }
+
+    @PostMapping ("/register")
+    public long register(String mobile) {
+        return memberService.register(mobile);
     }
 }
