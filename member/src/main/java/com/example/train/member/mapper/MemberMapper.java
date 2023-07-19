@@ -1,9 +1,31 @@
 package com.example.train.member.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
+import com.example.train.member.domain.Member;
+import com.example.train.member.domain.MemberExample;
+import org.apache.ibatis.annotations.Param;
 
-@Mapper
+import java.util.List;
+
 public interface MemberMapper {
+    long countByExample(MemberExample example);
 
-    int count();
+    int deleteByExample(MemberExample example);
+
+    int deleteByPrimaryKey(Long id);
+
+    int insert(Member record);
+
+    int insertSelective(Member record);
+
+    List<Member> selectByExample(MemberExample example);
+
+    Member selectByPrimaryKey(Long id);
+
+    int updateByExampleSelective(@Param("record") Member record, @Param("example") MemberExample example);
+
+    int updateByExample(@Param("record") Member record, @Param("example") MemberExample example);
+
+    int updateByPrimaryKeySelective(Member record);
+
+    int updateByPrimaryKey(Member record);
 }
