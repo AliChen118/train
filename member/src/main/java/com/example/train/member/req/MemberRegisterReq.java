@@ -1,5 +1,7 @@
 package com.example.train.member.req;
 
+import jakarta.validation.constraints.NotBlank;
+
 /**
  * @author Ali
  * @date 2023-07-20 07:39
@@ -7,6 +9,7 @@ package com.example.train.member.req;
 
 public class MemberRegisterReq {
 
+    @NotBlank(message = "手机号不能为空")
     private String mobile;
 
     public String getMobile() {
