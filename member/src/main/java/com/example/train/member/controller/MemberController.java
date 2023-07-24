@@ -28,19 +28,19 @@ public class MemberController {
     }
 
     @PostMapping ("/register")
-    public CommonResp<Long> register(@Valid MemberRegisterReq req) {
+    public CommonResp<Long> register(@Valid @RequestBody MemberRegisterReq req) {
         long id = memberService.register(req);
         return new CommonResp<>(id);
     }
 
     @PostMapping ("/send-code")
-    public CommonResp<Long> sendCode(@Valid MemberSendCodeReq req) {
+    public CommonResp<Long> sendCode(@Valid @RequestBody MemberSendCodeReq req) {
         memberService.sendCode(req);
         return new CommonResp<>();
     }
 
     @PostMapping ("/login")
-    public CommonResp<MemberLogineReq> login(@Valid MemberLogineReq req) {
+    public CommonResp<MemberLogineReq> login(@Valid @RequestBody MemberLogineReq req) {
         MemberLogineReq resp = memberService.login(req);
         return new CommonResp<>(resp);
     }
