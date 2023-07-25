@@ -4,6 +4,7 @@ import com.example.train.common.resp.CommonResp;
 import com.example.train.member.req.MemberLogineReq;
 import com.example.train.member.req.MemberRegisterReq;
 import com.example.train.member.req.MemberSendCodeReq;
+import com.example.train.member.resp.MemberLoginResp;
 import com.example.train.member.service.MemberService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
@@ -40,8 +41,8 @@ public class MemberController {
     }
 
     @PostMapping ("/login")
-    public CommonResp<MemberLogineReq> login(@Valid @RequestBody MemberLogineReq req) {
-        MemberLogineReq resp = memberService.login(req);
+    public CommonResp<MemberLoginResp> login(@Valid @RequestBody MemberLogineReq req) {
+        MemberLoginResp resp = memberService.login(req);
         return new CommonResp<>(resp);
     }
 }

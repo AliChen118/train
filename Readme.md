@@ -4,8 +4,17 @@
 
 ### 短信验证码登录
 
-![短信验证码登录1](https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202307210803341.jpg)
+<img src="https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202307210803341.jpg" alt="短信验证码登录1" style="zoom:25%;" />
 
-![短信验证码登录2](https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202307210803137.jpg)
+<img src="https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202307210803137.jpg" alt="短信验证码登录2" style="zoom:25%;" />
 
-![短信验证码登录3](https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202307210803468.jpg)
+<img src="https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202307210803468.jpg" alt="短信验证码登录3" style="zoom:25%;" />
+
+### 单点登录
+
+两种单点登录方案
+
+1. redis + token
+2. jwt √
+
+![image-20230725222508966](https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202307252225011.png)
