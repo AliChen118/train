@@ -1,4 +1,4 @@
-package com.example.train.common.util;
+package com.example.train.gateway.util;
 
 /**
  * @author Ali
