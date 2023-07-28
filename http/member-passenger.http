@@ -3,7 +3,6 @@ Content-Type: application/json
 token: {{token}}
 
 {
-  "memberId": "12306",
   "name": "test",
   "idCard": "360122",
   "type": "1"
