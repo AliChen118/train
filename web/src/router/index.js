@@ -13,10 +13,16 @@ const routes = [
     meta: {
       loginRequire: true
     },
-    children: [{
-      path: 'welcome',
-      component: () => import('../views/main/welcome.vue'),
-    }]
+    children: [
+      {
+        path: 'welcome',
+        component: () => import('../views/main/welcome.vue'),
+      },
+      {
+        path: 'passenger',
+        component: () => import('../views/main/passenger.vue'),
+      }
+  ]
   },
   {
     path: '',
