@@ -3,7 +3,7 @@ Content-Type: application/json
 token: {{token}}
 
 {
-  "name": "test123",
+  "name": "test234",
   "idCard": "360122",
   "type": "1"
 }
