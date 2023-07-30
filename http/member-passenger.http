@@ -1,9 +1,24 @@
+// 新增保存
 POST http://localhost:8000/member/passenger/save
 Content-Type: application/json
 token: {{token}}
 
 {
   "name": "test234",
+  "idCard": "360122",
+  "type": "1"
+}
+
+###
+// 编辑保存
+POST http://localhost:8000/member/passenger/save
+Content-Type: application/json
+token: {{token}}
+
+{
+  "id": 1685479329234030592,
+  "memberId": 1683276572557185024,
+  "name": "test_123",
   "idCard": "360122",
   "type": "1"
 }
