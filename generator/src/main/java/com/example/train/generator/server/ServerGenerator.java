@@ -17,17 +17,24 @@ public class ServerGenerator {
     }
 
     public static void main(String[] args) throws Exception {
-        generateDom();
+        String generatorPath = getGeneratorPath();
+
+        Document document = new SAXReader().read("generator/" + generatorPath);
+        Node table = document.selectSingleNode("//table");
+        System.out.println(table);
+        Node tableName = table.selectSingleNode("@tableName");
+        Node domainObjectName = table.selectSingleNode("@domainObjectName");
+        System.out.println(tableName.getText() + "/" + domainObjectName.getText());
     }
 
-    public static void generateDom() throws Exception{
+    public static String getGeneratorPath() throws Exception{
         SAXReader saxReader = new SAXReader();
         Map<String, String> map = new HashMap<String, String>();
         map.put("pom", "http://maven.apache.org/POM/4.0.0");
         saxReader.getDocumentFactory().setXPathNamespaceURIs(map);
         Document document = saxReader.read(pomPath);
         Node node = document.selectSingleNode("//pom:configurationFile");
-        System.out.println(node.getText());
+        return node.getText();
     }
 
     public static void generateDomain() throws Exception{
