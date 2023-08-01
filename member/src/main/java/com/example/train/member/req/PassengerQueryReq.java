@@ -4,6 +4,9 @@ import com.example.train.common.req.PageReq;
 
 public class PassengerQueryReq extends PageReq {
 
+    /**
+     * id
+     */
     private Long memberId;
 
     public Long getMemberId() {
