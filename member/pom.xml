@@ -41,6 +41,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.example.train.member.config.MemberApplication</mainClass>
+                </configuration>
                 <version>2.3.10.RELEASE</version>
             </plugin>
         </plugins>
