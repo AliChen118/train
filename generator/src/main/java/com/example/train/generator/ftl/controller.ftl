@@ -1,6 +1,5 @@
 package com.example.train.${module}.controller;
 
-import com.example.train.common.context.LoginMemberContext;
 import com.example.train.common.resp.CommonResp;
 import com.example.train.common.resp.PageResp;
 import com.example.train.${module}.req.${Domain}QueryReq;
@@ -11,10 +10,6 @@ import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * @author Ali
- * @date 2023-07-16 08:30
- */
 
 @RestController
 @RequestMapping("/${do_main}")
@@ -31,7 +26,6 @@ public class ${Domain}Controller {
 
     @GetMapping ("/query-list")
     public CommonResp<PageResp<${Domain}QueryResp>> queryList(@Valid ${Domain}QueryReq req) {
-        req.setMemberId(LoginMemberContext.getId());
         PageResp<${Domain}QueryResp> pageResp = ${domain}Service.queryList(req);
         return new CommonResp<>(pageResp);
     }
