@@ -1,9 +1,13 @@
 <template>
   <a-layout-header class="header">
-    <div class="logo" />
+    <div class="logo">
+      <router-link to="/welcome" style="color: white; font-size: 18px">
+        甲蛙12306
+      </router-link>
+    </div>
     <div style="float: right; color: white;">
-      您好: {{member.mobile}} &nbsp;&nbsp;
-      <router-link to="/login" style="color: white">
+      您好：{{member.mobile}} &nbsp;&nbsp;
+      <router-link to="/login" style="color: white;">
         退出登录
       </router-link>
     </div>
@@ -20,7 +24,7 @@
       </a-menu-item>
       <a-menu-item key="/passenger">
         <router-link to="/passenger">
-          <coffee-outlined /> &nbsp; 乘车人管理
+          <user-outlined /> &nbsp; 乘车人管理
         </router-link>
       </a-menu-item>
     </a-menu>
@@ -30,8 +34,7 @@
 <script>
 import {defineComponent, ref, watch} from 'vue';
 import store from "@/store";
-import router from "@/router";
-
+import router from '@/router'
 
 export default defineComponent({
   name: "the-header-view",
@@ -44,7 +47,6 @@ export default defineComponent({
       selectedKeys.value = [];
       selectedKeys.value.push(newValue);
     }, {immediate: true});
-
     return {
       member,
       selectedKeys
@@ -55,5 +57,11 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.logo {
+  float: left;
+  height: 31px;
+  width: 150px;
+  color: white;
+  font-size: 20px;
+}
 </style>
