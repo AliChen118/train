@@ -28,7 +28,7 @@
            ok-text="确认" cancel-text="取消">
     <a-form :model="trainStation" :label-col="{span: 4}" :wrapper-col="{ span: 20 }">
       <a-form-item label="车次编号">
-        <train-select-view v-model="trainStation.trainCode"></train-select-view>
+        <train-select-view v-model="trainStation.trainCode" width="50%"></train-select-view>
       </a-form-item>
       <a-form-item label="站序">
         <a-input v-model:value="trainStation.index" />
@@ -89,53 +89,51 @@ export default defineComponent({
     });
     let loading = ref(false);
     const columns = [
-    {
-      title: '车次编号',
-      dataIndex: 'trainCode',
-      key: 'trainCode',
-    },
-    {
-      title: '站序',
-      dataIndex: 'index',
-      key: 'index',
-    },
-    {
-      title: '站名',
-      dataIndex: 'name',
-      key: 'name',
-    },
-    {
-      title: '站名拼音',
-      dataIndex: 'namePinyin',
-      key: 'namePinyin',
-    },
-    {
-      title: '进站时间',
-      dataIndex: 'inTime',
-      key: 'inTime',
-    },
-    {
-      title: '出站时间',
-      dataIndex: 'outTime',
-      key: 'outTime',
-    },
-    {
-      title: '停站时长',
-      dataIndex: 'stopTime',
-      key: 'stopTime',
-    },
-    {
-      title: '里程（公里）',
-      dataIndex: 'km',
-      key: 'km',
-    },
-    {
-      title: '操作',
-      dataIndex: 'operation'
-    }
+      {
+        title: '车次编号',
+        dataIndex: 'trainCode',
+        key: 'trainCode',
+      },
+      {
+        title: '站序',
+        dataIndex: 'index',
+        key: 'index',
+      },
+      {
+        title: '站名',
+        dataIndex: 'name',
+        key: 'name',
+      },
+      {
+        title: '站名拼音',
+        dataIndex: 'namePinyin',
+        key: 'namePinyin',
+      },
+      {
+        title: '进站时间',
+        dataIndex: 'inTime',
+        key: 'inTime',
+      },
+      {
+        title: '出站时间',
+        dataIndex: 'outTime',
+        key: 'outTime',
+      },
+      {
+        title: '停站时长',
+        dataIndex: 'stopTime',
+        key: 'stopTime',
+      },
+      {
+        title: '里程（公里）',
+        dataIndex: 'km',
+        key: 'km',
+      },
+      {
+        title: '操作',
+        dataIndex: 'operation'
+      }
     ];
-
-    // http://pinyin-pro.cn/
     watch(() => trainStation.value.name, ()=>{
       if (Tool.isNotEmpty(trainStation.value.name)) {
         trainStation.value.namePinyin = pinyin(trainStation.value.name, { toneType: 'none'}).replaceAll(" ", "");
@@ -220,38 +218,11 @@ export default defineComponent({
       });
     };
 
-    // ----------------- 车次下拉框 -----------------
-    const trains = ref([]);
-
-    /**
-     * 查询所有的车次，用于车次下拉框
-     */
-    const queryTrainCode = () => {
-      axios.get("/business/admin/train/query-all").then((response) => {
-        let data = response.data;
-        if (data.success) {
-          trains.value = data.content;
-        } else {
-          notification.error({description: data.message});
-        }
-      });
-    };
-
-    /**
-     * 车次下拉框筛选
-     */
-    const filterTrainCodeOption = (input, option) => {
-      console.log(input, option);
-      return option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0;
-    };
-
     onMounted(() => {
       handleQuery({
         page: 1,
         size: pagination.value.pageSize
       });
-
-      queryTrainCode();
     });
 
     return {
@@ -267,8 +238,6 @@ export default defineComponent({
       handleOk,
       onEdit,
       onDelete,
-      filterTrainCodeOption,
-      trains
     };
   },
 });
