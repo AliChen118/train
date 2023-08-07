@@ -41,11 +41,12 @@
                              targetPackage="com.example.train.business.mapper"
                              type="XMLMAPPER"/>
 
-        <!--        <table tableName="member" domainObjectName="Member"/>-->
+<!--        <table tableName="member" domainObjectName="Member"/>-->
 <!--        <table tableName="train" domainObjectName="Train"/>-->
 <!--        <table tableName="train_station" domainObjectName="TrainStation"/>-->
 <!--        <table tableName="train_carriage" domainObjectName="TrainCarriage"/>-->
-        <!--        <table tableName="ticket" domainObjectName="Ticket"/>-->
-        <table tableName="train_seat" domainObjectName="TrainSeat"/>
+<!--        <table tableName="ticket" domainObjectName="Ticket"/>-->
+<!--        <table tableName="train_seat" domainObjectName="TrainSeat"/>-->
+        <table tableName="daily_train" domainObjectName="DailyTrain"/>
     </context>
 </generatorConfiguration>
