@@ -1,18 +1,25 @@
 package com.example.train.business.req;
 
+import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import java.math.BigDecimal;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
-public class TrainStationSaveReq {
+public class DailyTrainStationSaveReq {
 
     /**
      * id
      */
     private Long id;
+
+    /**
+     * 日期
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    @NotNull(message = "【日期】不能为空")
+    private Date date;
 
     /**
      * 车次编号
@@ -80,6 +87,14 @@ public class TrainStationSaveReq {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getTrainCode() {
@@ -169,6 +184,7 @@ public class TrainStationSaveReq {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", date=").append(date);
         sb.append(", trainCode=").append(trainCode);
         sb.append(", index=").append(index);
         sb.append(", name=").append(name);

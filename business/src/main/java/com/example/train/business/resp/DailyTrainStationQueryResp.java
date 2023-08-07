@@ -1,41 +1,43 @@
-package com.example.train.business.req;
+package com.example.train.business.resp;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-
-import java.math.BigDecimal;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.math.BigDecimal;
 
-public class TrainStationSaveReq {
+public class DailyTrainStationQueryResp {
 
     /**
      * id
      */
+    @JsonSerialize(using= ToStringSerializer.class)
     private Long id;
+
+    /**
+     * 日期
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    private Date date;
 
     /**
      * 车次编号
      */
-    @NotBlank(message = "【车次编号】不能为空")
     private String trainCode;
 
     /**
      * 站序
      */
-    @NotNull(message = "【站序】不能为空")
     private Integer index;
 
     /**
      * 站名
      */
-    @NotBlank(message = "【站名】不能为空")
     private String name;
 
     /**
      * 站名拼音
      */
-    @NotBlank(message = "【站名拼音】不能为空")
     private String namePinyin;
 
     /**
@@ -59,7 +61,6 @@ public class TrainStationSaveReq {
     /**
      * 里程（公里）|从上一站到本站的距离
      */
-    @NotNull(message = "【里程（公里）】不能为空")
     private BigDecimal km;
 
     /**
@@ -80,6 +81,14 @@ public class TrainStationSaveReq {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getTrainCode() {
@@ -169,6 +178,7 @@ public class TrainStationSaveReq {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", date=").append(date);
         sb.append(", trainCode=").append(trainCode);
         sb.append(", index=").append(index);
         sb.append(", name=").append(name);
