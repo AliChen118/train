@@ -2,6 +2,7 @@ package com.example.train.business.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
+import cn.hutool.core.util.ObjUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.example.train.common.resp.PageResp;
 import com.example.train.common.util.SnowUtil;
@@ -46,6 +47,12 @@ public class DailyTrainStationService {
         DailyTrainStationExample dailyTrainStationExample = new DailyTrainStationExample();
         dailyTrainStationExample.setOrderByClause("id desc");
         DailyTrainStationExample.Criteria criteria = dailyTrainStationExample.createCriteria();
+        if (ObjUtil.isNotNull(req.getDate())) {
+            criteria.andDateEqualTo(req.getDate());
+        }
+        if (ObjUtil.isNotEmpty(req.getTrainCode())) {
+            criteria.andTrainCodeEqualTo(req.getTrainCode());
+        }
 
         LOG.info("查询页码: {}", req.getPage());
         LOG.info("每页条数: {}", req.getSize());
