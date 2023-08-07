@@ -76,12 +76,12 @@ public class AdminServerGenerator {
         param.put("readOnly", readOnly);
         System.out.println("组装参数：" + param);
 
-//        generate(Domain, param, "service", "service");
-//        generate(Domain, param, "controller/admin", "adminController");
+        generate(Domain, param, "service", "service");
+        generate(Domain, param, "controller/admin", "adminController");
         generate(Domain, param, "req", "saveReq");
-//        generate(Domain, param, "req", "queryReq");
+        generate(Domain, param, "req", "queryReq");
         generate(Domain, param, "resp", "queryResp");
-//        genVue(do_main, param);
+        genVue(do_main, param);
     }
 
     private static void generate(String Domain, Map<String, Object> param, String packageName, String target) throws IOException, TemplateException {
