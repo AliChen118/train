@@ -13,7 +13,7 @@ public class TestController {
     private static final Logger LOG = LoggerFactory.getLogger(TestController.class);
 
     @Resource
-    BusinessFeign businessFeign;
+    private BusinessFeign businessFeign;
 
     @GetMapping("/hello")
     public String hello() {
