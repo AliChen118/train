@@ -108,4 +108,13 @@ public class DailyTrainStationService {
         }
         LOG.info("生成日期【{}】车次【{}】的车站信息结束", DateUtil.formatDate(date), trainCode);
     }
+
+    public List<DailyTrainStation> selectByDateAndTrainCode(Date date, String trainCode) {
+        DailyTrainStationExample dailyTrainStationExample = new DailyTrainStationExample();
+        dailyTrainStationExample.setOrderByClause("`index` asc");
+        dailyTrainStationExample.createCriteria()
+                .andDateEqualTo(date)
+                .andTrainCodeEqualTo(trainCode);
+        return dailyTrainStationMapper.selectByExample(dailyTrainStationExample);
+    }
 }
