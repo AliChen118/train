@@ -19,3 +19,4 @@ SessionStorage = {
         sessionStorage.clear();
     }
 };
+
