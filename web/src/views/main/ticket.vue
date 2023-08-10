@@ -14,6 +14,7 @@
            :loading="loading">
     <template #bodyCell="{ column, record }">
       <template v-if="column.dataIndex === 'operation'">
+        <a-button type="primary" @click="toOrder(record)">预订</a-button>
       </template>
       <template v-else-if="column.dataIndex === 'station'">
         {{record.start}}<br/>
@@ -78,6 +79,7 @@ import {notification} from "ant-design-vue";
 import axios from "axios";
 import StationSelectView from "@/components/station-select";
 import dayjs from "dayjs";
+import router from "@/router";
 
 export default defineComponent({
   name: "ticket-view",
@@ -153,6 +155,10 @@ export default defineComponent({
         title: '硬卧',
         dataIndex: 'yw',
         key: 'yw',
+      },
+      {
+        title: '操作',
+        dataIndex: 'operation',
       }
     ];
 
@@ -160,12 +166,15 @@ export default defineComponent({
     const handleQuery = (param) => {
       if (Tool.isEmpty(params.value.date)) {
         notification.error({description: "请输入日期"});
+        return;
       }
       if (Tool.isEmpty(params.value.start)) {
         notification.error({description: "请输入起始站"});
+        return;
       }
       if (Tool.isEmpty(params.value.end)) {
         notification.error({description: "请输入终点站"});
+        return;
       }
       if (!param) {
         param = {
@@ -211,6 +220,12 @@ export default defineComponent({
       return dayjs('00:00:00', 'HH:mm:ss').second(diff).format('HH:mm:ss');
     };
 
+    const toOrder = (record) => {
+      dailyTrainTicket.value = Tool.copy(record);
+      SessionStorage.set("dailyTrainTicket", dailyTrainTicket.value);
+      router.push("/order")
+    };
+
     onMounted(() => {
       // handleQuery({
       //   page: 1,
@@ -228,7 +243,8 @@ export default defineComponent({
       handleQuery,
       loading,
       params,
-      calDuration
+      calDuration,
+      toOrder
     };
   },
 });
