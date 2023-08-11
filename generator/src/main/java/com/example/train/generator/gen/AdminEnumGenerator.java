@@ -12,7 +12,7 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Method;
 
 public class AdminEnumGenerator {
-    static String path = "admin/src/assets/js/enums.js";
+    static String path = "web/src/assets/js/enums.js";
 
     public static void main(String[] args) {
         StringBuffer bufferObject = new StringBuffer();
