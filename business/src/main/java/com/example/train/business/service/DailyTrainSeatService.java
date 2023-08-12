@@ -121,4 +121,13 @@ public class DailyTrainSeatService {
         long count = dailyTrainSeatMapper.countByExample(dailyTrainSeatExample);
         return count == 0L ? -1 : (int)count;
     }
-}
+
+    public List<DailyTrainSeat> selectByCarriage(Date date, String trainCode, Integer carriageIndex) {
+        DailyTrainSeatExample dailyTrainSeatExample = new DailyTrainSeatExample();
+        dailyTrainSeatExample.createCriteria()
+                .andDateEqualTo(date)
+                .andTrainCodeEqualTo(trainCode)
+                .andCarriageIndexEqualTo(carriageIndex);
+        return dailyTrainSeatMapper.selectByExample(dailyTrainSeatExample);
+    }
+ }
