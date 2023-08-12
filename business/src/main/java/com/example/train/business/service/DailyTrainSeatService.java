@@ -90,7 +90,7 @@ public class DailyTrainSeatService {
         dailyTrainSeatMapper.deleteByExample(dailyTrainSeatExample);
 
         List<TrainStation> stationList = trainStationService.selectByTrainCode(trainCode);
-        String sell = StrUtil.fillBefore("", '0', stationList.size());
+        String sell = StrUtil.fillBefore("", '0', stationList.size() - 1);
 
         // 查出某车次的所有的座位信息
         List<TrainSeat> seatList = trainSeatService.selectByTrainCode(trainCode);
@@ -124,6 +124,7 @@ public class DailyTrainSeatService {
 
     public List<DailyTrainSeat> selectByCarriage(Date date, String trainCode, Integer carriageIndex) {
         DailyTrainSeatExample dailyTrainSeatExample = new DailyTrainSeatExample();
+        dailyTrainSeatExample.setOrderByClause("carriage_seat_index asc");
         dailyTrainSeatExample.createCriteria()
                 .andDateEqualTo(date)
                 .andTrainCodeEqualTo(trainCode)
