@@ -8,7 +8,10 @@ import cn.hutool.core.util.ByteUtil;
 import cn.hutool.core.util.EnumUtil;
 import cn.hutool.core.util.ObjUtil;
 import cn.hutool.core.util.ObjectUtil;
-import com.example.train.business.domain.*;
+import com.example.train.business.domain.DailyTrain;
+import com.example.train.business.domain.DailyTrainStation;
+import com.example.train.business.domain.DailyTrainTicket;
+import com.example.train.business.domain.DailyTrainTicketExample;
 import com.example.train.business.enums.SeatTypeEnum;
 import com.example.train.business.enums.TrainTypeEnum;
 import com.example.train.business.mapper.DailyTrainTicketMapper;
@@ -57,6 +60,7 @@ public class DailyTrainTicketService {
         }
     }
 
+    // @Cacheable(value = "DailyTrainSeatService.queryList")
     public PageResp<DailyTrainTicketQueryResp> queryList(DailyTrainTicketQueryReq req) {
         DailyTrainTicketExample dailyTrainTicketExample = new DailyTrainTicketExample();
         dailyTrainTicketExample.setOrderByClause("date desc, train_code asc, start_index asc, end_index asc");
