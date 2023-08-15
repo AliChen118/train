@@ -62,12 +62,24 @@ public class DailyTrainTicketService {
         }
     }
 
-    @CachePut(value = "DailyTrainSeatService.queryList")
+    @Cacheable(value = "DailyTrainTicketService.queryList3")
+    public PageResp<DailyTrainTicketQueryResp> queryList3(DailyTrainTicketQueryReq req) {
+        LOG.info("测试缓存击穿");
+        return null;
+    }
+
+    @CachePut(value = "DailyTrainTicketService.queryList")
     public PageResp<DailyTrainTicketQueryResp> queryList2(DailyTrainTicketQueryReq req) {
         return queryList(req);
     }
 
     @Cacheable(value = "DailyTrainSeatService.queryList")
+    // 去缓存里取数据，因数据库本身就没数据而造成缓存穿透
+    // if (有数据) { null []
+    //     return
+    // } else {
+    //     去数据库取数据
+    // }
     public PageResp<DailyTrainTicketQueryResp> queryList(DailyTrainTicketQueryReq req) {
         DailyTrainTicketExample dailyTrainTicketExample = new DailyTrainTicketExample();
         dailyTrainTicketExample.setOrderByClause("date desc, train_code asc, start_index asc, end_index asc");
