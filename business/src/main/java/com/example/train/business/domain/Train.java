@@ -1,8 +1,10 @@
 package com.example.train.business.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Train {
+// 实现Mysql的二级缓存需要序列化，序列化常用于传输类
+public class Train implements Serializable {
     private Long id;
 
     private String code;
