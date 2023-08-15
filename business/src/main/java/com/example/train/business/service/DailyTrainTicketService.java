@@ -25,6 +25,7 @@ import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -60,7 +61,7 @@ public class DailyTrainTicketService {
         }
     }
 
-    // @Cacheable(value = "DailyTrainSeatService.queryList")
+     @Cacheable(value = "DailyTrainSeatService.queryList")
     public PageResp<DailyTrainTicketQueryResp> queryList(DailyTrainTicketQueryReq req) {
         DailyTrainTicketExample dailyTrainTicketExample = new DailyTrainTicketExample();
         dailyTrainTicketExample.setOrderByClause("date desc, train_code asc, start_index asc, end_index asc");

@@ -1,0 +1,7 @@
+GET http://127.0.0.1:8000/business/admin/daily-train-ticket/query-list?page=1&size=5&trainCode=D1&start=北京&end=杭州
+Content-Type: application/json
+
+###
+
+GET http://127.0.0.1:8000/business/admin/daily-train-ticket/query-list2?page=1&size=5&trainCode=D1&start=北京&end=杭州
+Content-Type: application/json
