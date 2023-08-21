@@ -53,6 +53,7 @@ public class AfterConfirmOrderService {
 //    @GlobalTransactional
     public void afterDoConfirm(DailyTrainTicket dailyTrainTicket,
            List<DailyTrainSeat> finalSeatList, List<ConfirmOrderTicketReq> tickets, ConfirmOrder confirmOrder) throws Exception {
+        // LOG.info("seata全局事务ID: {}", RootContext.getXID());
         for (int j = 0; j < finalSeatList.size(); j++) {
             DailyTrainSeat dailyTrainSeat = finalSeatList.get(j);
             DailyTrainSeat seatForUpdate = new DailyTrainSeat();
