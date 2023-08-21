@@ -73,7 +73,7 @@ public class DailyTrainTicketService {
         return queryList(req);
     }
 
-    @Cacheable(value = "DailyTrainSeatService.queryList")
+//    @Cacheable(value = "DailyTrainTicketService.queryList")
     // 常见的缓存过期策略
     // TTL 超时时间
     // LRU 最近最少使用
