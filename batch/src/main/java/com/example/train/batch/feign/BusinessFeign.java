@@ -13,12 +13,13 @@ import java.util.Date;
  * @date 2023-08-08 08:04
  */
 
-@FeignClient("business")
+@FeignClient(value = "business", fallback = BusinessFeignFallback.class)
 //@FeignClient(name="business", url="http://127.0.0.1:8002")
 public interface BusinessFeign {
 
+//    @SentinelResource("test")
     @GetMapping("business/hello")
-    String hello1();
+    String hello();
 
     @GetMapping ("business/admin/daily-train/gen-daily/{date}")
     CommonResp<Object> genDaily(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date);

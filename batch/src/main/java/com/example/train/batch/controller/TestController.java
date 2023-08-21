@@ -17,7 +17,7 @@ public class TestController {
 
     @GetMapping("/hello")
     public String hello() {
-        String businessHello = businessFeign.hello1();
+        String businessHello = businessFeign.hello();
         LOG.info(businessHello);
         return "Hello World! Batch!" + businessHello;
     }

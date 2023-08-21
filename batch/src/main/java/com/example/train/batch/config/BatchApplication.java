@@ -18,7 +18,7 @@ import org.springframework.core.env.Environment;
 @ComponentScan("com.example")
 @MapperScan("com.example.train.*.mapper")
 @EnableFeignClients("com.example.train.batch.feign")
-public class BatchApplication {
+public class  BatchApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(BatchApplication.class);
 
