@@ -39,3 +39,10 @@
 - 漏桶限流：请求进桶
 - 令牌桶限流：令牌进桶
 - 令牌大闸：如一旦产生了1000个令牌就不再产生令牌了
+
+启动Sentinel控制台
+
+```bash
+java -Dserver.port=18080 -Dcsp.sentinel.dashboard.server=localhost:18080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.8.6.jar 
+```
+
