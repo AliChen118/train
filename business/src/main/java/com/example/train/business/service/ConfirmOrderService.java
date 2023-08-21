@@ -32,6 +32,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -104,6 +105,7 @@ public class ConfirmOrderService {
         confirmOrderMapper.deleteByPrimaryKey(id);
     }
 
+    @SentinelResource("doConfirm")
     public synchronized void doConfirm(ConfirmOrderDoReq req) {
         String lockKey = req.getDate() + "-" + req.getTrainCode();
 //        Boolean setIfAbsent = redisTemplate.opsForValue().setIfAbsent(lockKey, lockKey, 5, TimeUnit.SECONDS);

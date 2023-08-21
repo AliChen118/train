@@ -14,7 +14,6 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -22,6 +21,7 @@
             <groupId>com.example</groupId>
             <artifactId>common</artifactId>
         </dependency>
+
         <!--远程调用openfeign-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -32,6 +32,24 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-loadbalancer</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!--暂不使用redisson，演示机是macbook m2，经常会启动失败，报错：连接不到redis或获取不到连接-->
+        <!--<dependency>-->
+        <!--    <groupId>org.redisson</groupId>-->
+        <!--    <artifactId>redisson-spring-boot-starter</artifactId>-->
+        <!--</dependency>-->
+
+        <!-- 限流熔断 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -43,14 +61,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson-spring-boot-starter</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
@@ -58,11 +68,8 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.example.train.member.config.BusinessApplication</mainClass>
-                </configuration>
-                <version>2.3.10.RELEASE</version>
             </plugin>
+
             <!-- 配置当前项目的jdk版本信息 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
