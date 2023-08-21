@@ -12,7 +12,6 @@ import com.example.train.business.req.ConfirmOrderTicketReq;
 import com.example.train.common.context.LoginMemberContext;
 import com.example.train.common.req.MemberTicketReq;
 import com.example.train.common.resp.CommonResp;
-import io.seata.spring.annotation.GlobalTransactional;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +50,7 @@ public class AfterConfirmOrderService {
      */
 
     // @Transactional
-    @GlobalTransactional
+//    @GlobalTransactional
     public void afterDoConfirm(DailyTrainTicket dailyTrainTicket,
            List<DailyTrainSeat> finalSeatList, List<ConfirmOrderTicketReq> tickets, ConfirmOrder confirmOrder) throws Exception {
         for (int j = 0; j < finalSeatList.size(); j++) {
