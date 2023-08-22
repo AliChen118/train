@@ -12,6 +12,7 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.fastjson.JSON;
 import com.example.train.business.domain.*;
 import com.example.train.business.enums.ConfirmOrderStatusEnum;
+import com.example.train.business.enums.LockKeyPreEnum;
 import com.example.train.business.enums.SeatColEnum;
 import com.example.train.business.enums.SeatTypeEnum;
 import com.example.train.business.mapper.ConfirmOrderMapper;
@@ -119,7 +120,7 @@ public class ConfirmOrderService {
         }
 
         // 购票
-        String lockKey = req.getDate() + "-" + req.getTrainCode();
+        String lockKey =  LockKeyPreEnum.CONFIRM_ORDER + "-" +req.getDate() + "-" + req.getTrainCode();
         Boolean setIfAbsent = redisTemplate.opsForValue().setIfAbsent(lockKey, lockKey, 5, TimeUnit.SECONDS);
         if (setIfAbsent) {
             LOG.info("恭喜，抢到锁了！");
