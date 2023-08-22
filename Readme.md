@@ -46,3 +46,11 @@
 java -Dserver.port=18080 -Dcsp.sentinel.dashboard.server=localhost:18080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.8.6.jar 
 ```
 
+
+
+## 令牌大闸
+
+### 引入原因
+
+1. 防止机器人刷票
+2. 加快余票查询，直接去查令牌余量h
