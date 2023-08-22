@@ -53,4 +53,20 @@ java -Dserver.port=18080 -Dcsp.sentinel.dashboard.server=localhost:18080 -Dproje
 ### 引入原因
 
 1. 防止机器人刷票
-2. 加快余票查询，直接去查令牌余量h
+2. 加快余票查询，直接去查令牌余量更快
+
+## MQ
+
+### RocketMQ
+
+### 将购票流程一分为二
+
+1. 同步流程：验证码校验、令牌
+2. 异步流程：选座购票
+
+### 增加排队购票功能
+
+### 购票时序图
+
+### ![image-20230822165716079](https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202308221657171.png)
+
