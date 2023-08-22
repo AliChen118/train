@@ -12,7 +12,7 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.fastjson.JSON;
 import com.example.train.business.domain.*;
 import com.example.train.business.enums.ConfirmOrderStatusEnum;
-import com.example.train.business.enums.LockKeyPreEnum;
+import com.example.train.business.enums.RedisKeyPreEnum;
 import com.example.train.business.enums.SeatColEnum;
 import com.example.train.business.enums.SeatTypeEnum;
 import com.example.train.business.mapper.ConfirmOrderMapper;
@@ -111,7 +111,7 @@ public class ConfirmOrderService {
     @SentinelResource(value = "doConfirm", blockHandler = "doConfirmBlock")
     public void doConfirm(ConfirmOrderDoReq req) {
         // 校验令牌余量
-        boolean validSkToken = skTokenService.validSkToken(req, LoginMemberContext.getId());
+        boolean validSkToken = skTokenService.validSkToken(req.getDate(), req.getTrainCode(), LoginMemberContext.getId());
         if (validSkToken) {
             LOG.info("令牌校验通过");
         } else {
@@ -120,7 +120,7 @@ public class ConfirmOrderService {
         }
 
         // 购票
-        String lockKey =  LockKeyPreEnum.CONFIRM_ORDER + "-" +req.getDate() + "-" + req.getTrainCode();
+        String lockKey =  RedisKeyPreEnum.CONFIRM_ORDER + "-" +req.getDate() + "-" + req.getTrainCode();
         Boolean setIfAbsent = redisTemplate.opsForValue().setIfAbsent(lockKey, lockKey, 5, TimeUnit.SECONDS);
         if (setIfAbsent) {
             LOG.info("恭喜，抢到锁了！");
