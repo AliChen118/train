@@ -117,4 +117,15 @@ public class DailyTrainStationService {
                 .andTrainCodeEqualTo(trainCode);
         return dailyTrainStationMapper.selectByExample(dailyTrainStationExample);
     }
+
+    /**
+     * 按车次查询全部车站
+     */
+    public long countByTrainCode(Date date, String trainCode) {
+        DailyTrainStationExample example = new DailyTrainStationExample();
+        example.createCriteria()
+                .andDateEqualTo(date)
+                .andTrainCodeEqualTo(trainCode);
+        return dailyTrainStationMapper.countByExample(example);
+    }
 }
