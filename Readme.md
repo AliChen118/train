@@ -71,3 +71,19 @@ java -Dserver.port=18080 -Dcsp.sentinel.dashboard.server=localhost:18080 -Dproje
 <img src="https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202308230941803.png" alt="image-20230823094139755" style="zoom:150%;" />
 
 排队出票，拿到令牌就拿到了购票的资格，避免出现拿到令牌却因拿不到锁而无法购票的情况。
+
+
+
+## 压力测试
+
+### 相关概念
+
+**并发量：**指在同一时间点内，系统中同时处理的用户请求数。
+
+**响应时间：**指系统处理一个请求所需的时间。
+
+**吞吐量：**指系统在给定时间内处理的业务请求数量。等价于TPS。
+
+**QPS：**表示系统每秒钟处理的请求数量
+
+**TPS：**表示系统每秒钟完成的事务数量。
