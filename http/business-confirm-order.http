@@ -19,3 +19,7 @@ token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE2OTI1ODU2ODgsIm1vYmlsZSI6
   "trainCode": "D1"
 }
 ###
+
+GET http://localhost:8000/business/confirm-order/query-line-count/1693457221062627329
+Content-Type: application/json
+token: {{token}}
