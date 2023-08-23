@@ -7,7 +7,6 @@ import com.alibaba.fastjson.JSON;
 import com.example.train.business.domain.ConfirmOrder;
 import com.example.train.business.dto.ConfirmOrderMQDto;
 import com.example.train.business.enums.ConfirmOrderStatusEnum;
-import com.example.train.business.enums.RocketMQTopicEnum;
 import com.example.train.business.mapper.ConfirmOrderMapper;
 import com.example.train.business.req.ConfirmOrderDoReq;
 import com.example.train.business.req.ConfirmOrderTicketReq;
@@ -16,7 +15,6 @@ import com.example.train.common.exception.BusinessException;
 import com.example.train.common.exception.BusinessExceptionEnum;
 import com.example.train.common.util.SnowUtil;
 import jakarta.annotation.Resource;
-import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -38,7 +36,10 @@ public class BeforeConfirmOrderService {
     private SkTokenService skTokenService;
 
     @Resource
-    public RocketMQTemplate rocketMQTemplate;
+    private ConfirmOrderService confirmOrderService;
+
+//    @Resource
+//    public RocketMQTemplate rocketMQTemplate;
 
     @SentinelResource(value = "beforeDoConfirm", blockHandler = "beforeDoConfirmBlock")
     public long beforeDoConfirm(ConfirmOrderDoReq req) {
@@ -80,10 +81,11 @@ public class BeforeConfirmOrderService {
         confirmOrderMQDto.setDate(req.getDate());
         confirmOrderMQDto.setTrainCode(req.getTrainCode());
         confirmOrderMQDto.setLogId(MDC.get("LOG_ID"));
-        String reqJson = JSON.toJSONString(confirmOrderMQDto);
-        LOG.info("排队购票，发送mq开始，消息：{}", reqJson);
-        rocketMQTemplate.convertAndSend(RocketMQTopicEnum.CONFIRM_ORDER.getCode(), reqJson);
-        LOG.info("排队购票，发送mq结束");
+//        String reqJson = JSON.toJSONString(confirmOrderMQDto);
+//        LOG.info("排队购票，发送mq开始，消息：{}", reqJson);
+//        rocketMQTemplate.convertAndSend(RocketMQTopicEnum.CONFIRM_ORDER.getCode(), reqJson);
+//        LOG.info("排队购票，发送mq结束");
+        confirmOrderService.doConfirm(confirmOrderMQDto);
         return confirmOrder.getId();
     }
 
