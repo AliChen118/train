@@ -68,5 +68,6 @@ java -Dserver.port=18080 -Dcsp.sentinel.dashboard.server=localhost:18080 -Dproje
 
 ### 购票时序图
 
-### ![image-20230822165716079](https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202308221657171.png)
+<img src="https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202308230941803.png" alt="image-20230823094139755" style="zoom:150%;" />
 
+排队出票，拿到令牌就拿到了购票的资格，避免出现拿到令牌却因拿不到锁而无法购票的情况。

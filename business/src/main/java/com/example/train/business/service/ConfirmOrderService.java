@@ -280,8 +280,8 @@ public class ConfirmOrderService {
 //            if (null != lock && lock.isHeldByCurrentThread()) {
 //                lock.unlock();
 //            }
-//            LOG.info("购票流程结束，释放锁！");
-//            redisTemplate.delete(lockKey);
+            LOG.info("购票流程结束，释放锁！");
+            redisTemplate.delete(lockKey);
         }
     }
 
