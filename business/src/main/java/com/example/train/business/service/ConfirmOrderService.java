@@ -176,7 +176,7 @@ public class ConfirmOrderService {
                 }
 
                 // 一条一条的卖
-                list.forEach(this::sell);list.forEach(confirmOrder -> {
+                list.forEach(confirmOrder -> {
                     try {
                         sell(confirmOrder);
                     } catch (BusinessException e) {
