@@ -87,3 +87,12 @@ java -Dserver.port=18080 -Dcsp.sentinel.dashboard.server=localhost:18080 -Dproje
 **QPS：**表示系统每秒钟处理的请求数量
 
 **TPS：**表示系统每秒钟完成的事务数量。
+
+
+
+## 课程总结
+
+![image-20230823154228393](https://ali-pic-bed.oss-cn-beijing.aliyuncs.com/image/202308231542478.png)
+
+
+
